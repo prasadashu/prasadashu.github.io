@@ -818,6 +818,7 @@ section {
   pointer-events: none;
 }
 
+/* Blog-Content */
 .blog-container {
   min-height: 100vh;
   width: 100%;
