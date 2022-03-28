@@ -26,8 +26,6 @@ function PageTransitions(){
 
             // Make the current section active
             const element = document.getElementById(id);
-            console.log(id);
-            console.log(element);
             element.classList.add('active');
         }
     })
