@@ -308,7 +308,6 @@ section {
 .blogs .blog:hover img {
   -webkit-filter: grayscale(0);
           filter: grayscale(0);
-  cursor: pointer;
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
   -webkit-box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.8);
@@ -321,7 +320,7 @@ section {
   border-top: 8px solid var(--color-secondary);
 }
 
-.blogs .blog .blog-text h4 {
+.blogs .blog .blog-text a {
   font-size: 1.5rem;
   margin-bottom: .7rem;
   -webkit-transition: var(--transition-value);
@@ -329,7 +328,7 @@ section {
   cursor: pointer;
 }
 
-.blogs .blog .blog-text h4:hover {
+.blogs .blog .blog-text a:hover {
   color: var(--color-secondary);
 }
 
