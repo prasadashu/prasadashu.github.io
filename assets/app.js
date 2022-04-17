@@ -3,12 +3,7 @@ const sectBtns = document.querySelectorAll('.controls');
 const sectBtn = document.querySelectorAll('.control');
 const allSections = document.querySelector('.main-content');
 
-
 function PageTransitions(){
-    // Set the class name of the main section
-    if ('undefined' != localStorage["theme"]){
-        allSections.className = localStorage["theme"];
-    }
 
     // Button click active class
     for(let i = 0; i < sectBtn.length; i++){
@@ -36,7 +31,6 @@ function PageTransitions(){
             }
             catch (e){
                 console.log("Active element not found on the page");
-                console.log(e);
             }
         }
     })
@@ -44,12 +38,22 @@ function PageTransitions(){
     // Toggle theme
     const themeBtn = document.querySelector('.theme-btn');
     themeBtn.addEventListener('click',() =>{
-        // Toggle the class name
-        let element = document.body;
-        element.classList.toggle('light-mode');
-
-        // Update the local storage variable
-        localStorage["theme"] = document.body.classList;
+        
+        // Get the current theme
+        let currentTheme = document.documentElement.getAttribute('data-theme');
+        
+        // If the current theme is "light", set the theme to "dark"
+        if (currentTheme == "light"){
+            console.log("dark");
+            localStorage["theme"] = "dark";
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+        // Else set the theme to "light"
+        else {
+            console.log("light");
+            localStorage["theme"] = "light";
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
     })
 }
 

@@ -10,17 +10,27 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-</head>
-<body class="main-content">
-    <!--Load the deafult page theme on page load-->
     <script>
-        const bodySection = document.querySelector('.main-content');
+        const theme = localStorage.getItem('theme');
 
-        // Set the class name of the main section
-        if ('undefined' != localStorage["theme"]){
-            bodySection.className = localStorage["theme"];
+        // Set the class name of the main section when "theme" in cache is defined
+        // Set theme to default if it is undefined
+        if (theme == null) {
+            console.log("The theme is undefined");
+            document.documentElement.setAttribute("data-theme", "dark");
+            localStorage["theme"] = "dark";
+        }
+        else if (theme == "dark") {
+            console.log("The theme is dark");
+            document.documentElement.setAttribute("data-theme", "dark");
+        }
+        else if (theme == "light") {
+            console.log("The theme is light");
+            document.documentElement.setAttribute("data-theme", "light");
         }
     </script>
+</head>
+<body class="main-content">
 
     <!--Begin page content-->
     <div class="blog-container">
