@@ -44,13 +44,11 @@ function PageTransitions(){
         
         // If the current theme is "light", set the theme to "dark"
         if (currentTheme == "light"){
-            console.log("dark");
             localStorage["theme"] = "dark";
             document.documentElement.setAttribute('data-theme', 'dark');
         }
         // Else set the theme to "light"
         else {
-            console.log("light");
             localStorage["theme"] = "light";
             document.documentElement.setAttribute('data-theme', 'light');
         }
