@@ -7,8 +7,9 @@
 }
 
 html, html[data-theme="light"]{
+    --color-active-btn: #FFFFFF;
     --color-primary: #FFFFFF;
-    --color-secondary: #F56692;
+    --color-secondary: #1282d7;
     --color-white: #454e56;
     --color-black: #000;
     --color-grey0: #f8f8f8;
@@ -21,6 +22,7 @@ html, html[data-theme="light"]{
 }
 
 html[data-theme="dark"]{
+    --color-active-btn: #FFFFFF;
     --color-primary: #191d2b;
     --color-secondary: #27AE60;
     --color-white: #FFFFFF;
@@ -103,6 +105,13 @@ section{
     }
 }
 
+.name{
+    text-transform: unset !important;
+    span{
+        color: var(--color-secondary);
+    }
+}
+
 /* Navigation Button Section */
 .controls{
     display: flex;
@@ -141,7 +150,7 @@ section{
     .active-btn{
         background-color: var(--color-secondary);
         i{
-            color: var(--color-white);
+            color: var(--color-active-btn);
         }
     }
 }
@@ -523,6 +532,7 @@ section{
         padding: 0 2rem;
     }
     .submit-btn-icon{
+        color: var(--color-active-btn);
         background-color: var(--color-secondary);
         display: flex;
         align-items: center;
