@@ -7,8 +7,9 @@
 }
 
 html, html[data-theme="light"] {
+  --color-active-btn: #FFFFFF;
   --color-primary: #FFFFFF;
-  --color-secondary: #F56692;
+  --color-secondary: #1282d7;
   --color-white: #454e56;
   --color-black: #000;
   --color-grey0: #f8f8f8;
@@ -21,6 +22,7 @@ html, html[data-theme="light"] {
 }
 
 html[data-theme="dark"] {
+  --color-active-btn: #FFFFFF;
   --color-primary: #191d2b;
   --color-secondary: #27AE60;
   --color-white: #FFFFFF;
@@ -124,6 +126,14 @@ section {
   }
 }
 
+.name {
+  text-transform: unset !important;
+}
+
+.name span {
+  color: var(--color-secondary);
+}
+
 /* Navigation Button Section */
 .controls {
   display: -webkit-box;
@@ -188,7 +198,7 @@ section {
 }
 
 .controls .active-btn i {
-  color: var(--color-white);
+  color: var(--color-active-btn);
 }
 
 /* Blog Navigation Button */
@@ -743,6 +753,7 @@ section {
 }
 
 .submit-btn .submit-btn-icon {
+  color: var(--color-active-btn);
   background-color: var(--color-secondary);
   display: -webkit-box;
   display: -ms-flexbox;
