@@ -1257,12 +1257,12 @@ section {
     font-size: 15px;
   }
   .blog-container .line-no {
-    line-height: 30px !important;
-    font-size: 18px !important;
+    line-height: 20px !important;
+    font-size: 15px !important;
   }
   .blog-container .code-lines {
-    line-height: 30px !important;
-    font-size: 18px !important;
+    line-height: 20px !important;
+    font-size: 15px !important;
   }
 }
 /*# sourceMappingURL=styles.css.map */
