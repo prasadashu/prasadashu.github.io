@@ -1071,6 +1071,19 @@ section {
   .main-title h2 .bg-text {
     font-size: 2.3rem;
   }
+  .blog-container {
+    padding: 2rem 2rem;
+  }
+  .blog-container .blog-header {
+    font-size: 30px;
+  }
+  .blog-container .blog-content {
+    font-size: 15px;
+  }
+  .blog-container blockquote {
+    line-height: 2rem;
+    font-size: 15px;
+  }
 }
 
 @media screen and (max-width: 1432px) {
@@ -1117,6 +1130,28 @@ section {
   }
   .header-content .right-header {
     padding-right: 9rem;
+  }
+  .blog-container {
+    padding: 2rem 2rem;
+  }
+  .blog-container .blog-header {
+    font-size: 45px;
+  }
+  .blog-container .blog-content {
+    font-size: 20px;
+    line-height: 2.5rem;
+  }
+  .blog-container blockquote {
+    line-height: 2.5rem;
+    font-size: 22px;
+  }
+  .blog-container .line-no {
+    line-height: 30px !important;
+    font-size: 18px !important;
+  }
+  .blog-container .code-lines {
+    line-height: 30px !important;
+    font-size: 18px !important;
   }
 }
 
@@ -1207,6 +1242,27 @@ section {
   }
   .main-title h2 .bg-text {
     font-size: 4rem;
+  }
+  .blog-container {
+    padding: 2rem 2rem;
+  }
+  .blog-container .blog-header {
+    font-size: 30px;
+  }
+  .blog-container .blog-content {
+    font-size: 15px;
+  }
+  .blog-container blockquote {
+    line-height: 2rem;
+    font-size: 15px;
+  }
+  .blog-container .line-no {
+    line-height: 30px !important;
+    font-size: 18px !important;
+  }
+  .blog-container .code-lines {
+    line-height: 30px !important;
+    font-size: 18px !important;
   }
 }
 /*# sourceMappingURL=styles.css.map */
