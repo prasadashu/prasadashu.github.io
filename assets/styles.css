@@ -1222,13 +1222,76 @@ section {
   .section {
     padding: 7rem 3rem;
   }
-  .about-stats .progress-bars {
+  .about-container {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+    font-size: 16px;
+    grid-gap: 2rem;
+  }
+  .about-container .left-about .name {
+    font-size: 30px;
+  }
+  .about-container .left-about .btn-con {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .about-container .right-about .about-item {
+    width: 20rem;
+    height: 20rem;
+  }
+  .about-container .right-about .about-item img {
+    width: 15rem;
+    height: 15rem;
+  }
+  .about-stats {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+    grid-gap: 3rem;
+  }
+  .about-stats .left-stats .stat-item .large-text {
+    font-size: 2rem;
+  }
+  .about-stats .left-stats .stat-item .small-text {
+    font-size: 1rem;
+  }
+  .about-stats .right-stats {
+    grid-gap: 15px;
+  }
+  .about-stats .right-stats .skill-item {
+    width: 55px;
+    height: 55px;
+    padding: 2.5rem;
+  }
+  .about-stats .right-stats .skill-item img {
+    width: 55px;
+    height: 55px;
+  }
+  .about-contact {
     -ms-grid-columns: (1fr)[1];
         grid-template-columns: repeat(1, 1fr);
   }
-  .about-container .right-about {
-    -ms-grid-columns: (1fr)[1];
-        grid-template-columns: repeat(1, 1fr);
+  .about-contact .left-contact .contact-info .contact-icons {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .about-contact .right-contact {
+    margin-left: 0rem;
+  }
+  .about-contact .right-contact .contact-form {
+    margin: 15px !important;
+  }
+  .about-contact .right-contact .contact-form input {
+    font-size: 13px;
+  }
+  .about-contact .right-contact .contact-form textarea {
+    font-size: 13px;
+  }
+  .about-contact .right-contact .email-submit-btn {
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
   }
   .timeline {
     -ms-grid-columns: (1fr)[1];

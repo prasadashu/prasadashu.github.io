@@ -294,11 +294,82 @@
     .section{
         padding: 7rem 3rem;
     }
-    .about-stats .progress-bars{
+
+    .about-container{
         grid-template-columns: repeat(1, 1fr);
+        font-size: 16px;
+        grid-gap: 2rem;
+        .left-about{
+            .name{
+                font-size: 30px;
+            }
+            .btn-con{
+                justify-content: center;
+            }
+        }
+        .right-about{
+            .about-item{
+                width: 20rem;
+                height: 20rem;
+                img{
+                    width: 15rem;
+                    height: 15rem;
+                }
+            }
+        }
     }
-    .about-container .right-about{
+
+    .about-stats{
         grid-template-columns: repeat(1, 1fr);
+        grid-gap: 3rem;
+        .left-stats{
+            .stat-item{
+                .large-text{
+                    font-size: 2rem;
+                }
+                .small-text{
+                    font-size: 1rem;
+                }
+            }
+        }
+        .right-stats{
+            grid-gap: 15px;
+            .skill-item{
+                width: 55px;
+                height: 55px;
+                padding: 2.5rem;
+                img{
+                    width: 55px;
+                    height: 55px;
+                }
+            }
+        }
+    }
+
+    .about-contact{
+        grid-template-columns: repeat(1, 1fr);
+        .left-contact{
+            .contact-info{
+                .contact-icons{
+                    justify-content: center;
+                }
+            }
+        }
+        .right-contact{
+            margin-left: 0rem;
+            .contact-form{
+                margin: 15px !important;
+                input{
+                    font-size: 13px;
+                }
+                textarea{
+                    font-size: 13px;
+                }
+            }
+            .email-submit-btn{
+                justify-content: center !important;
+            }
+        }
     }
 
     .timeline{
