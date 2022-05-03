@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        const theme = localStorage.getItem('theme');
+
+        // Set the class name of the main section when "theme" in cache is defined
+        // Set theme to default if it is undefined
+        if (theme == null) {
+            document.documentElement.setAttribute("data-theme", "dark");
+            localStorage["theme"] = "dark";
+        }
+        else if (theme == "dark") {
+            document.documentElement.setAttribute("data-theme", "dark");
+        }
+        else if (theme == "light") {
+            document.documentElement.setAttribute("data-theme", "light");
+        }
+    </script>
+</head>
+<body class="main-content">
+
+    <!--Begin page content-->
+    <div class="blog-container">
+        <h1 class="blog-header">Sample Blog 1</h1>
+        <div class="blog-heading-image">
+            <img src="img/blog1-heading.jpg" alt="">
+        </div>
+        <div class="blog-content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+        <h2 class="sub-header">Heading 2</h2>
+        <div class="blog-content">
+            Ut venenatis tellus in metus vulputate. Potenti nullam ac tortor vitae purus faucibus ornare suspendisse sed. Tristique senectus et netus et malesuada. Tellus elementum sagittis vitae et leo duis. Est lorem ipsum dolor sit amet consectetur. Gravida cum sociis natoque penatibus et magnis. Tincidunt ornare massa eget egestas purus viverra accumsan. Pulvinar elementum integer enim neque volutpat ac tincidunt vitae semper. Tellus elementum sagittis vitae et leo duis. Eget velit aliquet sagittis id. Felis eget velit aliquet sagittis. Elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus.
+        </div>
+        <div class="blog-content">
+            Turpis cursus in hac habitasse. At risus viverra adipiscing at in tellus integer. Posuere urna nec tincidunt praesent. Neque vitae tempus quam pellentesque. Sed odio morbi quis commodo odio aenean sed adipiscing diam. Nullam ac tortor vitae purus. Cursus mattis molestie a iaculis at erat pellentesque. Nulla porttitor massa id neque aliquam vestibulum morbi blandit cursus. Scelerisque eu ultrices vitae auctor eu augue. Quisque sagittis purus sit amet volutpat consequat. Massa massa ultricies mi quis. Viverra justo nec ultrices dui sapien eget. Aliquet lectus proin nibh nisl condimentum id venenatis. Dui sapien eget mi proin sed. Quis commodo odio aenean sed adipiscing diam donec adipiscing tristique. Vulputate sapien nec sagittis aliquam malesuada bibendum arcu vitae. Hendrerit dolor magna eget est lorem ipsum dolor sit. Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Ullamcorper malesuada proin libero nunc consequat interdum varius sit. Viverra nibh cras pulvinar mattis nunc sed blandit.
+        </div>
+        <div class="blog-content">
+            Et pharetra pharetra massa massa. Scelerisque eu ultrices vitae auctor eu augue ut. Et egestas quis ipsum suspendisse ultrices. Pellentesque eu tincidunt tortor aliquam nulla. Dictum at tempor commodo ullamcorper. Sed turpis tincidunt id aliquet risus feugiat. Nibh cras pulvinar mattis nunc sed blandit. Fusce ut placerat orci nulla pellentesque dignissim. Lorem mollis aliquam ut porttitor leo a diam sollicitudin tempor. Imperdiet massa tincidunt nunc pulvinar sapien et ligula ullamcorper. A arcu cursus vitae congue mauris rhoncus aenean vel. Enim blandit volutpat maecenas volutpat blandit aliquam etiam erat. In massa tempor nec feugiat nisl.
+        </div>
+        <div class="blog-content">
+            This is <b>bold</b> and this is <strong>strong</strong> This is <i>italic</i> and this is <em>emphasized</em>. This is <sup>superscript</sup> text and this is <sub>subscript</sub> text. This is <u>underlined</u> and this is code: <code class="small-code">for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.
+        </div>
+        <div>
+            <blockquote>
+                Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.
+            </blockquote>
+        </div>
+        <!--Code Block Starts From Here-->
+        <table class="code-block">
+            <tr>
+                <td>
+                    <pre class="line-no">
+<!--    Space for code   -->1
+<!--    Space for code   -->2
+<!--    Space for code   -->3
+<!--    Space for code   -->4
+<!--    Space for code   -->5
+<!--    Space for code   -->6
+<!--    Space for code   -->7
+<!--    Space for code   -->8
+<!--    Space for code   -->9
+<!--Space for code--></pre>
+                </td>
+                <td>
+                    <pre class="code-lines">
+<!-- Space for code -->i = 0; 
+<!-- Space for code -->                  
+<!-- Space for code -->while (!deck.isInOrder()) {
+<!-- Space for code -->    print 'Iteration ' + i;
+<!-- Space for code -->    deck.shuffle();
+<!-- Space for code -->    i++;
+<!-- Space for code -->}
+<!-- Space for code -->
+<!-- Space for code -->print 'It took ' + i + ' iterations to sort the deck.';
+<!--Space for code--></pre>
+                </td>
+            </tr>
+        </table>
+        <!--Code Block Ends Here-->
+        <!--Code Block Starts From Here-->
+        <table class="code-block">
+            <tr>
+                <td>
+<!--Space for code--><pre class="line-no">
+<!--    Space for code   -->1
+<!--    Space for code   -->2
+<!--    Space for code   -->3
+<!--    Space for code   -->4
+<!--    Space for code   -->5
+<!--    Space for code   -->6
+<!--    Space for code   -->7
+<!--    Space for code   -->8
+<!--    Space for code   -->9
+<!--    Space for code   -->10
+<!--    Space for code   -->11
+<!--    Space for code   -->12
+<!--    Space for code   -->13
+<!--    Space for code   -->14
+<!--    Space for code   -->15
+<!--    Space for code   -->16
+<!--    Space for code   -->17
+<!--    Space for code   -->18
+<!--    Space for code   -->19
+<!--    Space for code   -->20
+<!--Space for code--></pre>
+                </td>
+                <td>
+<!--Space for code--><pre class="code-lines">
+<!--    Space for code   -->$ kubectl apply -f https://projectcontour.io/quickstart/contour.yaml
+<!--    Space for code   -->namespace/projectcontour created
+<!--    Space for code   -->serviceaccount/contour created
+<!--    Space for code   -->serviceaccount/envoy created
+<!--    Space for code   -->configmap/contour created
+<!--    Space for code   -->customresourcedefinition.apiextensions.k8s.io/contourconfigurations.projectcontour.io created
+<!--    Space for code   -->customresourcedefinition.apiextensions.k8s.io/contourdeployments.projectcontour.io created
+<!--    Space for code   -->customresourcedefinition.apiextensions.k8s.io/extensionservices.projectcontour.io created
+<!--    Space for code   -->customresourcedefinition.apiextensions.k8s.io/httpproxies.projectcontour.io created
+<!--    Space for code   -->customresourcedefinition.apiextensions.k8s.io/tlscertificatedelegations.projectcontour.io created
+<!--    Space for code   -->serviceaccount/contour-certgen created
+<!--    Space for code   -->rolebinding.rbac.authorization.k8s.io/contour created
+<!--    Space for code   -->role.rbac.authorization.k8s.io/contour-certgen created
+<!--    Space for code   -->job.batch/contour-certgen-v1.20.1 created
+<!--    Space for code   -->clusterrolebinding.rbac.authorization.k8s.io/contour created
+<!--    Space for code   -->clusterrole.rbac.authorization.k8s.io/contour created
+<!--    Space for code   -->service/contour created
+<!--    Space for code   -->service/envoy created
+<!--    Space for code   -->deployment.apps/contour created
+<!--    Space for code   -->daemonset.apps/envoy created
+<!--Space for code--></pre>
+                </td>
+            </tr>
+        </table>
+        <!--Code Block Ends Here-->
+    </div>
+    
+    <!--Blog Button Controls-->
+    <div class="blog-controls">
+        <a href="/index.html">
+            <div class="blog-btn" data-id="back-to-home" >
+                <i class="fas fa-home"></i>
+            </div>
+        </a>
+    </div>
+
+    <!--Theme Button-->
+    <div class="theme-btn">
+        <i class="fas fa-adjust"></i>
+    </div>
+
+    <!--Invoke JavaScript-->
+    <script src="/assets/app.js"></script>    
+</body>
