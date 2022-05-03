@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setting Static IP Address for Servers</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        const theme = localStorage.getItem('theme');
+
+        // Set the class name of the main section when "theme" in cache is defined
+        // Set theme to default if it is undefined
+        if (theme == null) {
+            document.documentElement.setAttribute("data-theme", "dark");
+            localStorage["theme"] = "dark";
+        }
+        else if (theme == "dark") {
+            document.documentElement.setAttribute("data-theme", "dark");
+        }
+        else if (theme == "light") {
+            document.documentElement.setAttribute("data-theme", "light");
+        }
+    </script>
+</head>
+<body class="main-content">
+
+    <!--Begin page content-->
+    <div class="blog-container">
+        <h1 class="blog-header">Setting Static IP Address for Servers</h1>
+        <div class="blog-heading-image">
+            <img src="img/static-ip-headline.jpg" alt="">
+        </div>
+        <div class="blog-content">
+            Static IP Addresses assigned to devices in the network remain constant. These type of IP Addresses are particularly useful when one hosts a dedicated service on their network. Clients can therefore directly connect to the server through the router whithout requiring to search for the IP Address for the server.
+
+            Static IP Addresses are setup manually on the servers and do not require a DHCP Server to be present on the network.
+        </div>
+        <h2 class="sub-header">Advantages of using Static IP Addresses</h2>
+        <div class="blog-content">
+            Since the IP Addresses are static, it is easy to find a particular device on the network.
+            <ul>
+                <li><b>Example:</b> Suppose a server in our network servers some specific service.</li>
+                <li>It would be easy for the router to send a specific request for this service to this server.</li>
+            </ul>
+
+            Having a static IP Address allows the DNS to map a hostname to the static IP Address.
+            <ul>
+                <li>If the IP Address frequently changes, the DNS needs to be reconfigured to map the hostname to the new IP Address.</li>
+            </ul>
+
+            If our IP Address of our server is dynamic and our server is hosting a service, the clients connected to it will have frequent disconnects the moment the IP Address for the server changes.
+            <ul>
+                <li>This means that the clients need to constantly connect to the new IP Address assigned to the server.</li>
+                <li>The router which will route the clients to the server will need to be hence updated with the new IP Address of the server.</li>
+            </ul>
+
+            A static IP Address will also be useful in case the Domain Name is inaccessible for the host.
+            <ul>
+                <li>This can happen when the DNS Server malfunctions.</li>
+                <li>In such cases, the clients can connect to the server using it’s IP Address.</li>
+                <li>Devices like FTP Servers, Printers etc use Static IP Addresses for this very purpose.</li>
+            </ul>
+
+            Static IP Addresses can limit downtime.
+            <ul>
+                <li>Suppose a server is hosting streaming services and is using a dynamic IP Address.</li>
+                <li>Now the moment the IP Address for the server changes, all the clients connected to the server will be disconnected.</li>
+                <li>The clients then have to wait to get the new IP Address for the server.</li>
+                <li>This will cause an interruption in the streaming service being availed by the clients.</li>
+            </ul>
+        </div>
+        <h2 class="sub-header">Disadvantages of using Static IP Addresses</h2>
+        <div class="blog-content">
+            One disadvantage of Static IP Addresses can be for the ISP.
+            <ul>
+                <li>The ISP provides IP Addresses dynamically to it’s customers.</li>
+                <li>Suppose the ISP provides static IP Addresses to it’s customers, every new customer will have a small fixes pool from which IP Addresses can be assigned.</li>
+                <li>Dynamic IP Addresses allows ISP to reuse an IP Address when it’s not in use therefore allowing a flexibility in scaling their customers.</li>
+            </ul>
+            
+            The Static IP Address has to be setup and configured manually.
+            <ul>
+                <li>If a devices is assigned an IP Address of let’s say <code class="small-code">192.168.1.x</code> in one network and then this device migrates to another network <code class="small-code">10.3.2.y</code>, the device will be required to be reconfigured to use the local network.</li>
+            </ul>
+            
+            From a security perspective, if a device has a static IP Address, a hacker will get more time to search for vulnerabilities in the server.
+            <ul>
+                <li>If however, the server uses dynamic IP Address, the hacker will have to change the way frequently in which the server is being communicated with.</li>
+            </ul>
+        </div>
+        <h2 class="sub-header">How to setup Static IP Addresses</h2>
+        <div class="blog-content">
+            <p>The configuration for setting up Static IP Addresses will be done on a CentOS 8 machine.</p>
+            <ul>
+                <li>We will run the below command to get a set of network interfaces running on the server.</li>
+            </ul>
+            <!--Code Block Starts From Here-->
+            <table class="code-block">
+                <tr>
+                    <td>
+                        <pre class="line-no">
+<!--  Space for code   -->1
+<!--  Space for code --></pre>
+                    </td>
+                    <td>
+                        <pre class="code-lines">
+<!--  Space for code   -->ifconfig
+<!--  Space for code --></pre>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="blog-content-image">
+                <img src="img/ifconfig_before.png" alt="">
+            </div>
+
+            <!--Code Block Ends Here-->
+            <ul>
+                <li>Choose a network interface from the list and edit it.</li>
+                <ul>
+                    <li>The path to the network interface file can be found below.</li>
+                </ul>
+            </ul>
+            <!--Code Block Starts From Here-->
+            <table class="code-block">
+                <tr>
+                    <td>
+                        <pre class="line-no">
+<!--  Space for code   -->1
+<!--  Space for code --></pre>
+                    </td>
+                    <td>
+                        <pre class="code-lines">
+<!--  Space for code   -->vi /etc/sysconfig/network-config/ifcfg-<b>&ltsome_interface_device_name&gt</b>
+<!--  Space for code --></pre>
+                    </td>
+                </tr>
+            </table>
+            <!--Code Block Ends Here-->
+            <ul>
+                <li>We will change the below values in this file.</li>
+            </ul>
+            <!--Code Block Starts From Here-->
+            <table class="code-block">
+                <tr>
+                    <td>
+                        <pre class="line-no">
+<!--  Space for code   -->1
+<!--  Space for code   -->2
+<!--  Space for code   -->3
+<!--  Space for code   -->4
+<!--  Space for code   -->5
+<!--  Space for code --></pre>
+                    </td>
+                    <td>
+                        <pre class="code-lines">
+<!--  Space for code   -->BOOTPROTO=static
+<!--  Space for code   -->IPADDR=&ltsome_desired_static_IP_Address&gt
+<!--  Space for code   -->GATEWAY=&ltthe_gateway_IP_Address_of_the_network&gt # Typically, this is the IP Address of the Router
+<!--  Space for code   -->PREFIX=24
+<!--  Space for code   -->ONBOOT=yes
+<!--  Space for code --></pre>
+                    </td>
+                </tr>
+            </table>
+            <!--Code Block Ends Here-->
+
+            <div class="blog-content-image">
+                <img src="img/interface_config.png" alt="">
+            </div>
+
+            <ul>
+                <li>Now we can do the two things below.</li>
+                <ul>
+                    <li>Either we can bring down the network interface.</li>
+                    <li>Or we can restart the Network Manager service for CentOS.</li>
+                </ul>
+            </ul>
+            <!--Code Block Starts From Here-->
+            <table class="code-block">
+                <tr>
+                    <td>
+                        <pre class="line-no">
+<!--  Space for code   -->1
+<!--  Space for code   -->2
+<!--  Space for code   -->3
+<!--  Space for code   -->4
+<!--  Space for code   -->5
+<!--  Space for code --></pre>
+                    </td>
+                    <td>
+                        <pre class="code-lines">
+<!--  Space for code   --># To bring down the network interface
+<!--  Space for code   -->ifdown <b>&ltnetwork_interface_name&gt</b>
+<!--  Space for code   -->
+<!--  Space for code   --># To bring up the network interface
+<!--  Space for code   -->ifup <b>&ltnetwork_interface_name&gt</b>
+<!--  Space for code --></pre>
+                    </td>
+                </tr>
+            </table>
+            <!--Code Block Ends Here-->
+            <!--Code Block Starts From Here-->
+            <table class="code-block">
+                <tr>
+                    <td>
+                        <pre class="line-no">
+<!--  Space for code   -->1
+<!--  Space for code   -->2
+<!--  Space for code --></pre>
+                    </td>
+                    <td>
+                        <pre class="code-lines">
+<!--  Space for code   --># Restarting the Network Manager
+<!--  Space for code   -->service NetworkManager restart
+<!--  Space for code --></pre>
+                    </td>
+                </tr>
+            </table>
+            <!--Code Block Ends Here-->
+            <ul>
+                <li>Now we can check the IP Address of our Network Interface.</li>
+            </ul>
+            <!--Code Block Starts From Here-->
+            <table class="code-block">
+                <tr>
+                    <td>
+                        <pre class="line-no">
+<!--  Space for code   -->1
+<!--  Space for code --></pre>
+                    </td>
+                    <td>
+                        <pre class="code-lines">
+<!--  Space for code   -->ifconfig
+<!--  Space for code --></pre>
+                    </td>
+                </tr>
+            </table>
+            <!--Code Block Ends Here-->
+
+            <div class="blog-content-image">
+                <img src="img/ifconfig_after.png" alt="">
+            </div>
+            
+        </div>
+    </div>
+    
+    <!--Blog Button Controls-->
+    <div class="blog-controls">
+        <a href="/index.html">
+            <div class="blog-btn" data-id="back-to-home" >
+                <i class="fas fa-home"></i>
+            </div>
+        </a>
+    </div>
+
+    <!--Theme Button-->
+    <div class="theme-btn">
+        <i class="fas fa-adjust"></i>
+    </div>
+
+    <!--Invoke JavaScript-->
+    <script src="/assets/app.js"></script>    
+</body>
