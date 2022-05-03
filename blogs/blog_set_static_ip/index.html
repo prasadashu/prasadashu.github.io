@@ -136,7 +136,7 @@
                     </td>
                     <td>
                         <pre class="code-lines">
-<!--  Space for code   -->vi /etc/sysconfig/network-config/ifcfg-<b>&ltsome_interface_device_name&gt</b>
+<!--  Space for code   -->vi /etc/sysconfig/network-config/ifcfg-&ltsome_interface_device_name&gt
 <!--  Space for code --></pre>
                     </td>
                 </tr>
@@ -161,7 +161,7 @@
                         <pre class="code-lines">
 <!--  Space for code   -->BOOTPROTO=static
 <!--  Space for code   -->IPADDR=&ltsome_desired_static_IP_Address&gt
-<!--  Space for code   -->GATEWAY=&ltthe_gateway_IP_Address_of_the_network&gt # Typically, this is the IP Address of the Router
+<!--  Space for code   -->GATEWAY=&ltthe_gateway_IP_Address_of_the_network&gt <i class="comments">#Typically, this is the IP Address of the Router</i>
 <!--  Space for code   -->PREFIX=24
 <!--  Space for code   -->ONBOOT=yes
 <!--  Space for code --></pre>
@@ -195,11 +195,11 @@
                     </td>
                     <td>
                         <pre class="code-lines">
-<!--  Space for code   --># To bring down the network interface
-<!--  Space for code   -->ifdown <b>&ltnetwork_interface_name&gt</b>
+<!--  Space for code   --><i class="comments"># To bring down the network interface</i>
+<!--  Space for code   -->ifdown &ltnetwork_interface_name&gt
 <!--  Space for code   -->
-<!--  Space for code   --># To bring up the network interface
-<!--  Space for code   -->ifup <b>&ltnetwork_interface_name&gt</b>
+<!--  Space for code   --><i class="comments"># To bring up the network interface</i>
+<!--  Space for code   -->ifup &ltnetwork_interface_name&gt
 <!--  Space for code --></pre>
                     </td>
                 </tr>
@@ -216,7 +216,7 @@
                     </td>
                     <td>
                         <pre class="code-lines">
-<!--  Space for code   --># Restarting the Network Manager
+<!--  Space for code   --><i class="comments"># Restarting the Network Manager</i>
 <!--  Space for code   -->service NetworkManager restart
 <!--  Space for code --></pre>
                     </td>
