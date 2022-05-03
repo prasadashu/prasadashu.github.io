@@ -1,9 +1,7 @@
 
 *{
     margin: 0;
-    padding: 0;
     box-sizing: border-box;
-    list-style: none;
 }
 
 html, html[data-theme="light"]{
@@ -607,7 +605,7 @@ section{
     }
     .blog-header{
         font-size: 3.5rem;
-        line-height: 1.5rem;
+        line-height: 2.5rem;
         margin-bottom: 3rem;
     }
     .sub-header{
@@ -615,10 +613,31 @@ section{
         margin-bottom: 10px;
         font-weight: 600;
     }
-    p{
+    div{
         color: var(--color-grey-2);
         line-height: 2rem;
         padding-bottom: 1rem;
+    }
+    ul{
+        margin-top: 1rem;
+        margin-bottom: 3rem;
+        line-height: 2.5rem;
+    }
+    .blog-content-image{
+        display: block;
+        margin: 0 0 3em 0;
+        img{
+            border-radius: 4px;
+            width: 100%;
+            border: 0;
+            display: inline-block;
+            position: relative;
+            transition:transform 0.25s ease;
+        }
+        &:hover{
+            -webkit-transform:scale(1.5);
+            transform:scale(1.5);
+        }
     }
     blockquote {
         display: block;
