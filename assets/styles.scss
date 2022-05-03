@@ -632,11 +632,11 @@ section{
             border: 0;
             display: inline-block;
             position: relative;
-            transition:transform 0.25s ease;
         }
         &:hover{
-            -webkit-transform:scale(1.5);
-            transform:scale(1.5);
+            transition: var(--transition-value);
+            -webkit-transform:scale(1.35);
+            transform:scale(1.35);
         }
     }
     blockquote {
