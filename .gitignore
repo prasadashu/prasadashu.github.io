@@ -1,0 +1,30 @@
+# Basic Info
+- Home page Blog images should be 600px x 400px
+- Blog page header images should be 1152px x 326px
+
+# How to add new blogs
+- Add a picture for the Blog to be displayed in the home page under the `img` directory in root.
+- Add the below section in the parent `index.html` page under `header` -> `header-content` -> `blogs`.
+
+```html
+<div class="blog">
+    <img src="img/blog1.jpg" alt="Blog 1">    <-- This should be replaced with the path of the new image added.
+    <div class="blog-text">
+        <a href="/blogs/blog1/">  <-- This should be replaced with the path to the new blog directory.
+            <h4>
+                Sample Blog 1
+            </h4>
+        </a>
+        <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+            Doloribus natus voluptas, eos obcaecati recusandae amet?
+        </p>
+    </div>
+</div>
+```
+- Add a directory under `blogs` directory in root.
+- Add the image for the Blog header to under an `img` directory within the new blog directory.
+- Use the template for blog index page and replace "Lorem Epsum" with the blog content.
+- Point the header image to the new image present in the `img` directory within the new blog directory.
+- Change the title of the blog page.
+- Change the content of the home blog content.
