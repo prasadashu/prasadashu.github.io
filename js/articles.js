@@ -1,15 +1,17 @@
 const articles = [
     {
         id: 1,
-        title: "My Journey into Software Engineering",
-        description: "A deep dive into the transition from a bootcamp grad to a senior platform engineer. The trials, the errors, and the 'aha' moments that shaped my career.",
-        image: "./articles/my-first-post/cover.jpg",
-        contentUrl: "./articles/my-first-post/content.html",
-        tags: ["Career", "Engineering"],
+        slug: "setting-static-ip-address-for-servers",
+        title: "Setting Static IP Address for Servers",
+        description: "Understanding what a static IP Address is and how to set a static IP Address on CentOS 8.",
+        image: "./articles/setting-static-ip-address-for-servers/cover.jpg",
+        contentUrl: "./articles/setting-static-ip-address-for-servers/content.html",
+        tags: ["Network", "Engineering"],
         date: "Oct 15, 2023"
     },
     {
         id: 2,
+        slug: "tech-stack-review",
         title: "The Modern Tech Stack Review",
         description: "Evaluating the current landscape of frontend and backend technologies. Is React still king? What about Rust for the backend? Let's discuss.",
         image: "./articles/tech-stack-review/cover.jpg",
@@ -19,6 +21,7 @@ const articles = [
     },
     {
         id: 3,
+        slug: "learning-rust",
         title: "Learning Rust in 2024",
         description: "My personal notes and project experiences while learning Rust over the weekend. A guide for Python/JS developers making the jump.",
         image: "./articles/learning-rust/cover.jpg",

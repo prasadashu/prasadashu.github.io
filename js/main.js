@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="text-text-secondary text-sm mb-4 line-clamp-3">${article.description}</p>
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between mt-auto gap-4">
                         <span class="text-xs text-text-secondary font-medium transition-colors"></span>
-                        <a href="#" class="read-more-btn text-[var(--accent-color)] text-sm font-semibold hover:underline flex items-center gap-1 group" data-id="${article.id}">
+                        <a href="?article=${article.slug}" class="read-more-btn text-[var(--accent-color)] text-sm font-semibold hover:underline flex items-center gap-1 group" data-id="${article.id}" data-slug="${article.slug}">
                             Read more <i data-lucide="arrow-up-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
                         </a>
                     </div>
@@ -85,10 +85,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const readMoreBtns = document.querySelectorAll('.read-more-btn');
         readMoreBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
+                // Allow normal opening in new tab/window if modifier keys are pressed
+                if (e.ctrlKey || e.metaKey || e.shiftKey) return;
                 e.preventDefault();
                 // Find the closest anchor tag that has the data-id attribute, in case the click was on the child icon
                 const targetBtn = e.target.closest('a.read-more-btn') || e.target;
-                openArticle(targetBtn.dataset.id);
+                openArticle(targetBtn.dataset.slug || targetBtn.dataset.id);
             });
         });
     }
@@ -232,9 +234,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const articleMeta = document.getElementById('article-meta');
     const articleBody = document.getElementById('article-body');
 
-    function openArticle(articleId) {
-        const article = window.articlesData.find(a => a.id === parseInt(articleId));
+    function openArticle(identifier, pushState = true) {
+        let article;
+        if (typeof identifier === 'number' || (typeof identifier === 'string' && !isNaN(identifier))) {
+            article = window.articlesData.find(a => a.id === parseInt(identifier));
+        } else {
+            article = window.articlesData.find(a => a.slug === identifier);
+        }
         if (!article) return;
+
+        // Update URL
+        if (pushState) {
+            const url = new URL(window.location.href);
+            url.searchParams.set('article', article.slug);
+            window.history.pushState({ article: article.slug }, '', url);
+        }
 
         // Populate basic overlay data immediately
         if (articleHeroImg) articleHeroImg.src = article.image;
@@ -281,8 +295,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             if (!codeBlock) return;
 
                             // Get raw text and split by newlines, trimming trailing empty line
-                            const codeText = codeBlock.textContent.replace(/\n$/, '');
-                            const lines = codeText.split('\n');
+                            const codeHTML = codeBlock.innerHTML.replace(/\n$/, '');
+                            const lines = codeHTML.split('\n');
 
                             const container = document.createElement('div');
                             container.className = 'code-container';
@@ -301,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 return `
                                         <div class="code-line">
                                             <span class="line-num">${index + 1}</span>
-                                            <span class="line-text">${escapedLine || ' '}</span>
+                                            <span class="line-text">${line || ' '}</span> 
                                         </div>
                                     `}).join('')}
                                 </div>
@@ -337,8 +351,15 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
-    function closeArticle() {
-        if (!articleOverlay) return;
+    function closeArticle(pushState = true) {
+        if (!articleOverlay || articleOverlay.classList.contains('hidden')) return;
+
+        // Update URL to remove article search param
+        if (pushState) {
+            const url = new URL(window.location.href);
+            url.searchParams.delete('article');
+            window.history.pushState({}, '', url);
+        }
 
         // Hide with transition
         articleOverlay.classList.add('opacity-0');
@@ -354,7 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close button event
     if (closeArticleBtn) {
-        closeArticleBtn.addEventListener('click', closeArticle);
+        closeArticleBtn.addEventListener('click', () => closeArticle(true));
     }
 
     // Close when clicking outside of the modal (on the dark backdrop)
@@ -362,7 +383,7 @@ document.addEventListener('DOMContentLoaded', () => {
         articleOverlay.addEventListener('click', (e) => {
             // Only close if we clicked the overlay background or the close button, not the content
             if (e.target === articleOverlay) {
-                closeArticle();
+                closeArticle(true);
             }
         });
     }
@@ -404,6 +425,23 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, 300);
     });
+
+    // === Handle Direct Links and Back/Forward Navigation ===
+    function handleInitialUrlAndPopState() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const articleSlug = urlParams.get('article');
+        if (articleSlug) {
+            openArticle(articleSlug, false);
+        } else {
+            closeArticle(false);
+        }
+    }
+
+    // Handle initial load
+    handleInitialUrlAndPopState();
+
+    // Handle back/forward buttons
+    window.addEventListener('popstate', handleInitialUrlAndPopState);
 
     // Initialize all icons on initial load
     lucide.createIcons();

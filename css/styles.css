@@ -237,8 +237,9 @@ html[data-theme="dark"] .btn-animated:hover {
 }
 
 #article-body p {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   line-height: 1.8;
+  font-size: 20px;
 }
 
 #article-body a {
@@ -260,6 +261,17 @@ html[data-theme="dark"] .btn-animated:hover {
 
 #article-body ul {
   list-style-type: disc;
+  margin-top: 1rem;
+  margin-bottom: 4rem;
+  line-height: 2.5rem;
+}
+
+/* Nested (sub-line) list: Circle */
+#article-body ul ul {
+  list-style-type: circle;
+  margin-top: 0.5rem;   /* Adjusted for tighter nesting */
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
 }
 
 #article-body ol {
@@ -267,7 +279,7 @@ html[data-theme="dark"] .btn-animated:hover {
 }
 
 #article-body li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.1rem;
 }
 
 #article-body blockquote {
@@ -378,6 +390,13 @@ html[data-theme="dark"] .btn-animated:hover {
 #article-body .line-text {
   color: var(--text-primary);
   white-space: pre;
+}
+
+/* Target the comment specifically inside the dynamic line */
+#article-body .line-text i.comments {
+  color: var(--accent-color); /* Or your preferred comment color */
+  font-style: italic;
+  display: inline; /* Ensure it stays on the same line */
 }
 
 /* Article Imagery Contexts */

@@ -1,0 +1,122 @@
+<p>Static IP Addresses assigned to devices in the network remain constant. These type of IP Addresses are particularly useful when one hosts a dedicated service on their network. Clients can therefore directly connect to the server through the router whithout requiring to search for the IP Address for the server.</p>
+
+<p>Static IP Addresses are setup manually on the servers and do not require a DHCP Server to be present on the network.</p>
+
+<h2>Advantages of using Static IP Addresses</h2>
+<p>Since the IP Addresses are static, it is easy to find a particular device on the network.</p>
+<ul>
+  <li><b>Example:</b> Suppose a server in our network servers some specific service.</li>
+  <li>It would be easy for the router to send a specific request for this service to this server.</li>
+</ul>
+
+<p>Having a static IP Address allows the DNS to map a hostname to the static IP Address.</p>
+<ul>
+  <li>If the IP Address frequently changes, the DNS needs to be reconfigured to map the hostname to the new IP Address.</li>
+</ul>
+
+<p>If our IP Address of our server is dynamic and our server is hosting a service, the clients connected to it will have frequent disconnects the moment the IP Address for the server changes.</p>
+<ul>
+  <li>This means that the clients need to constantly connect to the new IP Address assigned to the server.</li>
+  <li>The router which will route the clients to the server will need to be hence updated with the new IP Address of the server.</li>
+</ul>
+
+<p>A static IP Address will also be useful in case the Domain Name is inaccessible for the host.</p>
+<ul>
+  <li>This can happen when the DNS Server malfunctions.</li>
+  <li>In such cases, the clients can connect to the server using it’s IP Address.</li>
+  <li>Devices like FTP Servers, Printers etc use Static IP Addresses for this very purpose.</li>
+</ul>
+
+<p>Static IP Addresses can limit downtime.</p>
+<ul>
+  <li>Suppose a server is hosting streaming services and is using a dynamic IP Address.</li>
+  <li>Now the moment the IP Address for the server changes, all the clients connected to the server will be disconnected.</li>
+  <li>The clients then have to wait to get the new IP Address for the server.</li>
+  <li>This will cause an interruption in the streaming service being availed by the clients.</li>
+</ul>
+
+
+<h3>Disadvantages of using Static IP Addresses</h3>
+<p>One disadvantage of Static IP Addresses can be for the ISP.</p>
+<ul>
+  <li>The ISP provides IP Addresses dynamically to it’s customers.</li>
+  <li>Suppose the ISP provides static IP Addresses to it’s customers, every new customer will have a small fixes pool from which IP Addresses can be assigned.</li>
+  <li>Dynamic IP Addresses allows ISP to reuse an IP Address when it’s not in use therefore allowing a flexibility in scaling their customers.</li>
+</ul>
+
+<p>The Static IP Address has to be setup and configured manually.</p>
+<ul>
+    <li>If a devices is assigned an IP Address of let’s say <code class="small-code">192.168.1.x</code> in one network and then this device migrates to another network <code class="small-code">10.3.2.y</code>, the device will be required to be reconfigured to use the local network.</li>
+</ul>
+
+<p>From a security perspective, if a device has a static IP Address, a hacker will get more time to search for vulnerabilities in the server.</p>
+<ul>
+    <li>If however, the server uses dynamic IP Address, the hacker will have to change the way frequently in which the server is being communicated with.</li>
+</ul>
+
+<h3>How to setup Static IP Addresses</h3>
+<p>The configuration for setting up Static IP Addresses will be done on a CentOS 8 machine.</p>
+<ul>
+  <li>We will run the below command to get a set of network interfaces running on the server.</li>
+</ul>
+
+<pre><code>ifconfig</code></pre>
+<figure>
+  <img src="./articles/setting-static-ip-address-for-servers/ifconfig_before.png" alt="IP Configuration" loading="lazy">
+  <figcaption>IP configuration before making the changes</figcaption>
+</figure>
+
+<ul>
+  <li>Choose a network interface from the list and edit it.</li>
+  <ul>
+    <li>The path to the network interface file can be found below.</li>
+  </ul>
+</ul>
+
+<pre><code>vi /etc/sysconfig/network-config/ifcfg-&ltsome_interface_device_name&gt</code></pre>
+
+<ul>
+  <li>We will change the below values in this file.</li>
+</ul>
+
+<pre><code>BOOTPROTO=static
+IPADDR=&ltsome_desired_static_IP_Address&gt
+GATEWAY=&ltthe_gateway_IP_Address_of_the_network&gt <i class="comments">#Typically, this is the IP Address of the Router</i>
+PREFIX=24
+ONBOOT=yes
+</code></pre>
+
+<figure>
+  <img src="./articles/setting-static-ip-address-for-servers/interface_config.png" alt="Interface config" loading="lazy">
+  <figcaption>Interface config</figcaption>
+</figure>
+
+<ul>
+  <li>Now we can do the two things below.</li>
+  <ul>
+    <li>Either we can bring down the network interface.</li>
+    <li>Or we can restart the Network Manager service for CentOS.</li>
+  </ul>
+</ul>
+
+<pre><code><i class="comments"># To bring down the network interface</i>
+ifdown &ltnetwork_interface_name&gt
+
+<i class="comments"># To bring up the network interface</i>
+ifup &ltnetwork_interface_name&gt
+</code></pre>
+
+<pre><code><i class="comments"># Restarting the Network Manager</i>
+service NetworkManager restart
+</code></pre>
+
+<ul>
+    <li>Now we can check the IP Address of our Network Interface.</li>
+</ul>
+<pre><code>ifconfig
+</code></pre>
+
+<figure>
+  <img src="./articles/setting-static-ip-address-for-servers/ifconfig_after.png" alt="IP Configuration" loading="lazy">
+  <figcaption>IP config after making the changes</figcaption>
+</figure>
