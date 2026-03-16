@@ -7,7 +7,7 @@ const articles = [
         image: "./articles/setting-static-ip-address-for-servers/cover.jpg",
         contentUrl: "./articles/setting-static-ip-address-for-servers/content.html",
         tags: ["Network", "Engineering"],
-        date: "Oct 15, 2023"
+        date: "May 03, 2022"
     },
     {
         id: 2,
