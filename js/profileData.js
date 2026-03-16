@@ -20,11 +20,11 @@ const profileData = {
         { name: "Ansible", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ansible/ansible-original.svg" }
     ],
     contact: {
-        location: "San Francisco, CA",
-        email: "hello@example.com",
+        location: "Chicago, IL",
+        email: "ashu_prasad@outlook.com",
         socials: [
-            { platform: "GitHub", url: "#", icon: "github" },
-            { platform: "LinkedIn", url: "#", icon: "linkedin" }
+            { platform: "GitHub", url: "https://github.com/prasadashu", icon: "github" },
+            { platform: "LinkedIn", url: "https://www.linkedin.com/in/ashuprasad/", icon: "linkedin" }
         ]
     }
 };

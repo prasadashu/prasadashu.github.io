@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h4 class="text-sm font-semibold uppercase tracking-wider text-text-secondary mb-4">Find me on</h4>
                     <div class="flex gap-4">
                         ${window.profileInfo.contact.socials.map(social => `
-                            <a href="${social.url}" aria-label="${social.platform}" class="w-10 h-10 rounded-full bg-[var(--bg-tertiary)] flex items-center justify-center border border-[var(--border-color)] text-text-secondary hover:text-white hover:bg-[var(--accent-color)] hover:border-[var(--accent-color)] transition-all">
+                            <a href="${social.url}" target="_blank" aria-label="${social.platform}" class="w-10 h-10 rounded-full bg-[var(--bg-tertiary)] flex items-center justify-center border border-[var(--border-color)] text-text-secondary hover:text-white hover:bg-[var(--accent-color)] hover:border-[var(--accent-color)] transition-all">
                                 <i data-lucide="${social.icon}" class="w-5 h-5"></i>
                             </a>
                         `).join('')}
