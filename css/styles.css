@@ -1,0 +1,412 @@
+:root {
+  /* Light Theme (Clean Minimalist) */
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f1f5f9;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --accent-color: #2563eb;
+  /* Royal Blue */
+  --accent-hover: #1d4ed8;
+  --border-color: #e2e8f0;
+  --skill-shadow: 0 3px 15px rgba(0, 0, 0, .3);
+  --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+html[data-theme="dark"] {
+  /* Dark Theme (Sleek Midnight) */
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --accent-color: #06b6d4;
+  /* Neon Cyan */
+  --accent-hover: #0891b2;
+  --border-color: #334155;
+  --skill-shadow: 0 3px 15px rgba(255, 255, 255, 0.3);
+  --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.2);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Custom Hide/Show for SPA Tabs */
+.tab-content {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.tab-content.active {
+  display: block;
+  opacity: 1;
+}
+
+/* 
+  Button Hover Right-to-Left Fill 
+*/
+.btn-animated {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  background-color: var(--bg-tertiary);
+  /* Base color */
+  border: 1px solid var(--accent-color);
+  color: var(--text-primary);
+  transition: color 0.4s ease-in-out;
+}
+
+.btn-animated::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 100%;
+  /* Start entirely on the right outside */
+  background-color: var(--accent-color);
+  z-index: -1;
+  transition: left 0.4s ease-in-out;
+}
+
+.btn-animated:hover {
+  color: #fff;
+  /* Ensure text is visible on accent color */
+}
+
+/* Specific text color for dark mode since text is already white */
+html[data-theme="dark"] .btn-animated:hover {
+  color: var(--bg-primary);
+}
+
+.btn-animated:hover::before {
+  left: 0;
+  /* Fill from right to left */
+}
+
+/* 
+  Article Card Image B&W to Color & Lift 
+*/
+.article-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+.article-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.2), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.article-card img {
+  filter: grayscale(100%);
+  transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+.article-card:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.03);
+}
+
+/* Ensure horizontal line acts as separator */
+.article-card hr {
+  border-color: var(--border-color);
+  margin: 0;
+}
+
+/* 
+  Skill Card Lift 
+*/
+.skill-card {
+  box-shadow: var(--card-shadow);
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+  will-change: transform;
+}
+
+.skill-card.observe-item {
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, opacity 0.8s ease-out;
+}
+
+.skill-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent-color);
+  /* Use an inset shadow to visually thicken the border without causing layout shifts */
+  box-shadow: inset 0 0 0 3px var(--accent-color), 0 12px 20px -8px rgb(0 0 0 / 0.2);
+}
+
+
+/* 
+  Intersection Observer Classes 
+*/
+.observe-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+}
+
+.observe-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.line-expand {
+  width: 0%;
+  transition: width 1s ease-out, opacity 1s ease-out;
+  opacity: 0;
+  transform: translateX(-50%);
+}
+
+.line-expand.is-visible {
+  width: 100%;
+  opacity: 1;
+}
+
+/* Staggered entrance for lists if desired */
+.delay-100 {
+  transition-delay: 100ms;
+}
+
+.delay-200 {
+  transition-delay: 200ms;
+}
+
+.delay-300 {
+  transition-delay: 300ms;
+}
+
+/* Custom Scrollbar for better aesthetics */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* Article Reader Typography */
+#article-body {
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
+#article-body h1,
+#article-body h2,
+#article-body h3 {
+  color: var(--text-primary);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+#article-body h1 {
+  font-size: 2.25rem;
+}
+
+#article-body h2 {
+  font-size: 1.875rem;
+}
+
+#article-body h3 {
+  font-size: 1.5rem;
+}
+
+#article-body p {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+#article-body a {
+  color: var(--accent-color);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+#article-body a:hover {
+  border-bottom-color: var(--accent-color);
+}
+
+#article-body ul,
+#article-body ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+#article-body ul {
+  list-style-type: disc;
+}
+
+#article-body ol {
+  list-style-type: decimal;
+}
+
+#article-body li {
+  margin-bottom: 0.5rem;
+}
+
+#article-body blockquote {
+  border-left: 4px solid var(--accent-color);
+  padding-left: 1rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  background-color: var(--bg-tertiary);
+  padding: 1rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  margin-bottom: 1.5rem;
+}
+
+/* Base formatting for inline code */
+#article-body code {
+  color: var(--accent-color);
+  background-color: var(--bg-tertiary);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+}
+
+/* Dynamic JS-Parsed Code Blocks */
+#article-body .code-container {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  margin: 2rem 0;
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+/* Mac-style Window Header */
+#article-body .code-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.2rem;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+#article-body .code-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+#article-body .code-dot.red {
+  background-color: #ff5f56;
+}
+
+#article-body .code-dot.yellow {
+  background-color: #ffbd2e;
+}
+
+#article-body .code-dot.green {
+  background-color: #27c93f;
+}
+
+/* The Code Body */
+#article-body .code-content {
+  padding: 1.25rem 0;
+  overflow-x: auto;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+
+/* Individual Lines */
+#article-body .code-line {
+  display: flex;
+  padding: 0.1rem 1rem;
+  transition: background-color 0.2s;
+}
+
+#article-body .code-line:hover {
+  background-color: var(--bg-secondary);
+}
+
+/* The Line Number and Pipe */
+#article-body .line-num {
+  min-width: 2.5rem;
+  text-align: right;
+  padding-right: 1rem;
+  color: var(--accent-color);
+  user-select: none;
+  font-weight: 600;
+  /* Instead of a standard border, we use a pipe construct visually */
+  position: relative;
+  margin-right: 1rem;
+}
+
+#article-body .line-num::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background-color: var(--border-color);
+  border-radius: 2px;
+}
+
+/* The actual text content */
+#article-body .line-text {
+  color: var(--text-primary);
+  white-space: pre;
+}
+
+/* Article Imagery Contexts */
+#article-body figure {
+  margin: 3rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 85%;
+  /* Constrain width of the entire figure container */
+}
+
+#article-body figure img {
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  width: 100%;
+  max-width: 700px;
+  /* Force a maximum pleasant width regardless of container */
+  max-height: 500px;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+#article-body figcaption {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  width: 100%;
+  line-height: 1.4;
+}

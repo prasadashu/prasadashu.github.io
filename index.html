@@ -1,237 +1,212 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="/assets/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script>
-        const theme = localStorage.getItem('theme');
-
-        // Set the class name of the main section when "theme" in cache is defined
-        // Set theme to default if it is undefined
-        if (theme == null) {
-            document.documentElement.setAttribute("data-theme", "dark");
-            localStorage["theme"] = "dark";
+    <title>Ashu Prasad</title>
+    <!-- Tailwind CSS (via CDN for simplicity) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <style>
+        .font-display {
+            font-family: 'Outfit', sans-serif;
         }
-        else if (theme == "dark") {
-            document.documentElement.setAttribute("data-theme", "dark");
-        }
-        else if (theme == "light") {
-            document.documentElement.setAttribute("data-theme", "light");
-        }
-    </script>
+    </style>
 </head>
-<body class="main-content" id="main-content">
-    
-    <!--Home Page-->
-    <header class="section sec1 header active" id="home">
-        <div class="header-content">
-            <div class="main-title">
-                <h2>My<span>Blogs</span></h2>
+
+<body class="antialiased min-h-screen flex flex-col pt-16">
+
+    <!-- Navigation Header -->
+    <header
+        class="fixed top-0 left-0 right-0 z-50 bg-[var(--bg-primary)]/80 backdrop-blur-md border-b border-[var(--border-color)] transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <div class="font-display font-bold text-xl tracking-tight text-text-primary">
+                Ashu<span class="text-[var(--accent-color)]">.</span>
             </div>
-            <div class="blogs">
-                <div class="blog">
-                    <img src="img/blog1.jpg" alt="Blog 1">
-                    <div class="blog-text">
-                        <a href="/blogs/blog1/">
-                            <h4>
-                                Sample Blog 1
-                            </h4>
-                        </a>
-                        <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                            Doloribus natus voluptas, eos obcaecati recusandae amet?
-                        </p>
-                    </div>
-                </div>
-                <div class="blog">
-                    <img src="img/blog2.jpg" alt="">
-                    <div class="blog-text">
-                        <a href="/blogs/blog1/">
-                            <h4>
-                                Sample Blog 2
-                            </h4>
-                        </a>
-                        <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                            Doloribus natus voluptas, eos obcaecati recusandae amet?
-                        </p>
-                    </div>
-                </div>
-                <div class="blog">
-                    <img src="img/blog3.jpg" alt="">
-                    <div class="blog-text">
-                        <a href="/blogs/blog1/">
-                            <h4>
-                                Sample Blog 3
-                            </h4>
-                        </a>
-                        <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                            Doloribus natus voluptas, eos obcaecati recusandae amet?
-                        </p>
-                    </div>
-                </div>
-                <div class="blog">
-                    <img src="img/port1.jpg" alt="">
-                    <div class="blog-text">
-                        <a href="/blogs/blog1/">
-                            <h4>
-                                Sample Blog 4
-                            </h4>
-                        </a>
-                        <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                            Doloribus natus voluptas, eos obcaecati recusandae amet?
-                        </p>
-                    </div>
-                </div>
-            </div>
+
+            <nav class="flex items-center gap-1 sm:gap-4 overflow-x-auto no-scrollbar scroll-smooth">
+                <button
+                    class="tab-btn active px-4 py-2 text-sm font-semibold rounded-full border border-accent-color text-[var(--accent-color)] transition-colors duration-200 whitespace-nowrap"
+                    data-target="feed-tab">
+                    Articles
+                </button>
+                <button
+                    class="tab-btn px-4 py-2 text-sm font-semibold rounded-full border border-transparent text-[var(--text-secondary)] hover:text-text-primary hover:border-[var(--border-color)] transition-colors duration-200 whitespace-nowrap"
+                    data-target="profile-tab">
+                    Profile
+                </button>
+            </nav>
+
+            <button id="theme-toggle"
+                class="p-2 rounded-full hover:bg-[var(--bg-tertiary)] text-text-secondary transition-colors duration-200"
+                aria-label="Toggle Theme">
+                <!-- Icon injected via JS -->
+                <i data-lucide="sun" class="w-5 h-5"></i>
+            </button>
         </div>
     </header>
 
-    <!--Remaining Sections-->
-    <main>
-        <section class="section sec2 about" id="about">
-            <div class="main-title">
-                <h2>about<span>Me</span></h2>
+    <!-- Main Content Area -->
+    <main class="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 py-10">
+
+        <!-- ======================= -->
+        <!-- TAB 1: ARTICLE FEED     -->
+        <!-- ======================= -->
+        <section id="feed-tab" class="tab-content active">
+            <h2 class="text-4xl font-bold font-display mb-8 text-center"><span class="text-text-primary">my</span><span
+                    class="text-[var(--accent-color)]">Articles</span></h2>
+            <!-- Search / Filter -->
+            <div class="mb-10 relative max-w-xl observe-item">
+                <div
+                    class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[var(--text-secondary)]">
+                    <i data-lucide="search" class="w-5 h-5"></i>
+                </div>
+                <input type="text" id="search-input" placeholder="Search by #tag or phrase..."
+                    class="block w-full pl-10 pr-4 py-3 bg-[var(--bg-secondary)] border border-[var(--border-color)] rounded-xl text-text-primary placeholder:text-[var(--text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)] focus:border-transparent transition-shadow duration-200">
             </div>
-            <div class="about-container">
-                <div class="left-about">
-                    <h4 class="name">Hi, I'm <span>Ashu Prasad</span>.</h4>
-                    <p>
-                        I'm working as a DevOps Engineer @ Bank of America. I'm part of the DataOps Team 
-                        where we provision and manage the on premise Big-Data Infrastructure through DevOps solutions. <br /> <br />
-                        I carry over 2 years of experience in the Software Industry with a focus on platform automations and metrics development.
-                    </p>
-                    <div class="btn-con">
-                        <a href="#" class="submit-btn" target="_blank">
-                            <span class="submit-btn-text">Download CV</span>
-                            <span class="submit-btn-icon"><i class="fas fa-download"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="right-about">
-                    <div class="about-item">
-                        <img src="img/profile.jpeg" alt="">
-                    </div>
-                </div>
+
+            <!-- Articles Grid -->
+            <div id="articles-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Rendered dynamically via JS -->
             </div>
-            <h4 class="stat-title">My Skills</h4>
-            <div class="about-stats">
-                <div class="left-stats">
-                    <div class="stat-item">
-                        <p class="large-text">10+</p>
-                        <p class="small-text">Projects </br> Completed</p>
+        </section>
+
+
+        <!-- ======================= -->
+        <!-- TAB 2: PROFILE PAGE     -->
+        <!-- ======================= -->
+        <section id="profile-tab" class="tab-content">
+            <h2 class="text-4xl font-bold font-display mb-8 text-center"><span class="text-text-primary">my</span><span
+                    class="text-[var(--accent-color)]">Profile</span></h2>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+                <!-- Left Column: Bio & Skills -->
+                <div class="lg:col-span-8 space-y-16">
+
+                    <!-- General Description -->
+                    <div id="profile-general" class="space-y-6">
+                        <!-- Rendered via JS -->
                     </div>
-                    <div class="stat-item">
-                        <p class="large-text">2+</p>
-                        <p class="small-text">Years of </br> Experience</p>
+
+                    <div class="relative py-4 overflow-hidden flex justify-center w-full">
+                        <hr class="border-t-[3px] border-[var(--accent-color)] line-expand observe-item">
+                    </div>
+
+                    <!-- Skills Matrix -->
+                    <div>
+                        <h3 class="text-2xl font-display font-bold mb-8 observe-item">Technical Arsenal</h3>
+                        <div id="skills-grid" class="flex flex-wrap gap-4 sm:gap-6">
+                            <!-- Rendered via JS -->
+                        </div>
                     </div>
                 </div>
-                <div class="right-stats">
-                    <div class="skill-item">
-                        <img src="img/python.png" alt=""></img>
-                    </div>
-                    <div class="skill-item">
-                        <img src="img/linux.png" alt=""></img>
-                    </div>
-                    <div class="skill-item">
-                        <img src="img/git.png" alt=""></img>
-                    </div>
-                    <div class="skill-item">
-                        <img src="img/docker.png" alt=""></img>
-                    </div>
-                    <div class="skill-item">
-                        <img src="img/elk.png" alt=""></img>
-                    </div>
-                    <div class="skill-item">
-                        <img src="img/ansible.png" alt=""></img>
-                    </div>
-                </div>
-            </div>
-            <h4 class="stat-title">Contact Me</h4>
-            <div class="about-contact">
-                <div class="left-contact">
-                    <h4>Contact Me Here</h4>
-                    <p>
-                        
-                    </p>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <div class="icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Location</span>
+
+                <!-- Right Column: Contact -->
+                <div class="lg:col-span-4">
+                    <div
+                        class="sticky top-24 bg-[var(--bg-secondary)] border border-[var(--border-color)] rounded-2xl p-6 shadow-sm observe-item">
+
+                        <!-- Info injected via JS -->
+                        <div id="contact-info" class="mb-8"></div>
+
+                        <hr class="border-[var(--border-color)] mb-8">
+
+                        <h3 class="text-xl font-bold mb-4">Send a Message</h3>
+                        <form class="space-y-4">
+                            <div>
+                                <label for="name"
+                                    class="block text-sm font-medium text-text-secondary mb-1">Name</label>
+                                <input type="text" id="name"
+                                    class="w-full bg-[var(--bg-tertiary)] border border-[var(--border-color)] rounded-lg px-4 py-2 text-text-primary focus:outline-none focus:ring-1 focus:ring-[var(--accent-color)]"
+                                    required>
                             </div>
-                            <p>
-                                : Chennai, India
-                            </p>
-                        </div>
-                        <div class="contact-item">
-                            <div class="icon">
-                                <i class="fas fa-envelope"></i>
-                                <span>Email</span>
+                            <div>
+                                <label for="email"
+                                    class="block text-sm font-medium text-text-secondary mb-1">Email</label>
+                                <input type="email" id="email"
+                                    class="w-full bg-[var(--bg-tertiary)] border border-[var(--border-color)] rounded-lg px-4 py-2 text-text-primary focus:outline-none focus:ring-1 focus:ring-[var(--accent-color)]"
+                                    required>
                             </div>
-                            <p>
-                                : ashu_prasad@outlook.com
-                            </p>
-                        </div>
-                        <div class="contact-icons">
-                            <a href="https://www.linkedin.com/in/ashuprasad/" target="_blank">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="https://github.com/prasadashu" target="_blank">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
+                            <div>
+                                <label for="subject"
+                                    class="block text-sm font-medium text-text-secondary mb-1">Subject</label>
+                                <input type="text" id="subject"
+                                    class="w-full bg-[var(--bg-tertiary)] border border-[var(--border-color)] rounded-lg px-4 py-2 text-text-primary focus:outline-none focus:ring-1 focus:ring-[var(--accent-color)]"
+                                    required>
+                            </div>
+                            <div>
+                                <label for="message"
+                                    class="block text-sm font-medium text-text-secondary mb-1">Message</label>
+                                <textarea id="message" rows="4"
+                                    class="w-full bg-[var(--bg-tertiary)] border border-[var(--border-color)] rounded-lg px-4 py-2 text-text-primary focus:outline-none focus:ring-1 focus:ring-[var(--accent-color)] resize-none"
+                                    required></textarea>
+                            </div>
+                            <button type="submit"
+                                class="btn-animated w-full py-3 rounded-full font-semibold flex items-center justify-center gap-2 mt-4 text-text-primary">
+                                <span>Submit</span>
+                                <i data-lucide="send" class="w-5 h-5"></i>
+                            </button>
+                        </form>
                     </div>
-                </div>
-                <div class="right-contact">
-                    <form action="mailto:ashuprasadoffiziell@gmail.com" method="POST" class="contact-form">
-                        <div class="contact-form input-name-email">
-                            <input type="text" required placeholder="YOUR NAME">
-                            <input type="text" required placeholder="YOUR EMAIL">
-                        </div>
-                        <div class="contact-form input-mail-subject">
-                            <input type="text" required placeholder="ENTER SUBJECT">
-                        </div>
-                        <div class="contact-form input-email-content">
-                            <textarea name="" id="" cols="15" rows="8" placeholder="Message here..."></textarea>
-                        </div>
-                        <div class="email-submit-btn">
-                            <a href="#" class="submit-btn">
-                                <span class="submit-btn-text">Submit</span>
-                                <span class="submit-btn-icon"><i class="fas fa-envelope"></i></span>
-                            </a>
-                        </div>
-                    </form>
                 </div>
             </div>
         </section>
+
     </main>
 
-    <!--Button Controls-->
-    <div class="controls">
-        <div class="control control-1 active-btn" data-id="home" >
-            <i class="fas fa-book"></i>
+    <footer class="mt-auto border-t border-[var(--border-color)] bg-[var(--bg-secondary)] py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-text-secondary text-sm">
+            <p>&copy; 2026 Ashu. Built using Vanilla JS & Tailwind CSS.</p>
         </div>
-        <div class="control control-2 " data-id="about">
-            <i class="fas fa-user"></i>
+    </footer>
+
+
+    <!-- Article Reader Overlay -->
+    <div id="article-overlay"
+        class="fixed inset-0 z-[100] bg-[var(--bg-primary)]/95 backdrop-blur-md overflow-y-auto hidden opacity-0 transition-opacity duration-300">
+        <div
+            class="max-w-[100rem] mx-auto my-0 sm:my-12 bg-[var(--bg-secondary)] sm:rounded-2xl shadow-2xl border-0 sm:border border-[var(--border-color)] overflow-hidden relative min-h-screen sm:min-h-0">
+            <!-- Close Button -->
+            <button id="close-article"
+                class="absolute top-4 right-4 w-10 h-10 bg-[var(--bg-tertiary)] bg-opacity-80 rounded-full flex items-center justify-center text-text-primary hover:bg-[var(--accent-color)] hover:text-white transition-colors z-20 backdrop-blur-sm cursor-pointer shadow-md">
+                <i data-lucide="x"></i>
+            </button>
+
+            <!-- Hero Image -->
+            <div class="w-full h-64 sm:h-80 md:h-96 relative">
+                <img id="article-hero-img" src="" alt="Article Cover" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[var(--bg-secondary)] to-transparent"></div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="px-6 py-10 sm:px-12 md:px-16 -mt-20 relative z-10">
+                <div class="flex flex-wrap items-center gap-2 mb-4 text-xs font-semibold tracking-wide"
+                    id="article-meta">
+                    <!-- Date and Tags populated dynamically -->
+                </div>
+                <h1 id="article-title"
+                    class="text-3xl md:text-5xl font-bold font-display text-text-primary mb-8 leading-tight"></h1>
+
+                <div id="article-body" class="text-text-secondary text-lg leading-relaxed">
+                    <!-- HTML Content fetched from file goes here -->
+                </div>
+            </div>
         </div>
     </div>
 
-    <!--Theme Button-->
-    <div class="theme-btn">
-        <i class="fas fa-adjust"></i>
-    </div>
+    <!-- Data Models -->
+    <script src="js/articles.js"></script>
+    <script src="js/profileData.js"></script>
 
-    <!--Invoke JavaScript-->
-    <script src="/assets/app.js"></script>
+    <!-- Application Logic -->
+    <script src="js/main.js"></script>
 </body>
+
 </html>
