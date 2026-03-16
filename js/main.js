@@ -112,9 +112,11 @@ document.addEventListener('DOMContentLoaded', () => {
                             I carry over <strong class="text-text-primary">${window.profileInfo.general.experience} years</strong> of experience in the Software Industry 
                             with a focus on ${window.profileInfo.general.skillsFocus}
                         </p>
-                        <a href="#" class="btn-animated inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold shadow-sm observe-item delay-100">
-                            Download Resume <i data-lucide="download" class="w-5 h-5"></i>
-                        </a>
+                        <div class="flex justify-center">
+                            <a href="#" class="btn-animated inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold shadow-sm observe-item delay-100">
+                                Download Resume <i data-lucide="download" class="w-5 h-5"></i>
+                            </a>
+                        </div>
                     </div>
                     <div class="order-1 xl:order-2 shrink-0">
                         <div class="w-[320px] h-[320px] rounded-full p-2 border-4 border-transparent hover:border-[var(--accent-color)] hover:-translate-y-3 transition-all duration-700">

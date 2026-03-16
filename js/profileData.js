@@ -1,11 +1,11 @@
 const profileData = {
     general: {
         name: "Ashu", // Placeholder mapped to user folder
-        jobTitle: "Senior Software Engineer",
-        company: "AlphaTech Systems",
-        team: "Platform Engineering",
-        responsibilities: "architecting scalable backends and optimizing deployment pipelines",
-        experience: "8+",
+        jobTitle: "Application Engineer",
+        company: "Capital One",
+        team: "SRE Engineering",
+        responsibilities: "architecting scalable backends and optimizing kubernetes deployment",
+        experience: "6+",
         skillsFocus: "distributed systems, cloud-native infrastructure, and performance optimization."
     },
     skills: [
