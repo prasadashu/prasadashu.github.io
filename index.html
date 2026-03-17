@@ -33,7 +33,7 @@
 
             <nav class="flex items-center gap-1 sm:gap-4 overflow-x-auto no-scrollbar scroll-smooth">
                 <button
-                    class="tab-btn active px-4 py-2 text-sm font-semibold rounded-full border border-accent-color text-[var(--accent-color)] transition-colors duration-200 whitespace-nowrap"
+                    class="tab-btn active px-4 py-2 text-sm font-semibold rounded-full border border-accent-color text-[var(--accent-color)] hover:text-text-primary hover:border-[var(--border-color)] transition-colors duration-200 whitespace-nowrap"
                     data-target="feed-tab">
                     Articles
                 </button>
@@ -60,8 +60,6 @@
         <!-- TAB 1: ARTICLE FEED     -->
         <!-- ======================= -->
         <section id="feed-tab" class="tab-content active">
-            <h2 class="text-4xl font-bold font-display mb-8 text-center"><span class="text-text-primary">my</span><span
-                    class="text-[var(--accent-color)]">Articles</span></h2>
             <!-- Search / Filter -->
             <div class="mb-10 relative max-w-xl observe-item">
                 <div
@@ -83,8 +81,6 @@
         <!-- TAB 2: PROFILE PAGE     -->
         <!-- ======================= -->
         <section id="profile-tab" class="tab-content">
-            <h2 class="text-4xl font-bold font-display mb-8 text-center"><span class="text-text-primary">my</span><span
-                    class="text-[var(--accent-color)]">Profile</span></h2>
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
                 <!-- Left Column: Bio & Skills -->
